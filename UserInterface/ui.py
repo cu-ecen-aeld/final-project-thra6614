@@ -5,7 +5,7 @@ import sqlite3
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from datetime import datetime
-
+import socket
 
 class GraphWidget( QWidget ):
     def __init__( self, parent=None ):
@@ -196,35 +196,106 @@ class MainWindow( QMainWindow ):
         # Connect tab change signal to updateScreen method
         self.tabWidget.currentChanged.connect( self.updateScreen )
 
-    def updateScreen( self ):
+    # def updateScreen( self ):
+    #     # Determine which tab is selected
+    #     current_tab_index = self.tabWidget.currentIndex()
+
+    #     # Make socket call to 10.0.0.160 port 9000 with the command "get10"
+    #     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    #         s.connect(('10.0.0.160', 9000))
+    #         s.sendall(b'get10')
+    #         received_data = s.recv(1024)  # Adjust buffer size as needed
+
+    #     # Parse received data and plot accordingly
+    #     data_lines = received_data.decode('utf-8').split('\n')
+    #     timestamps = []
+    #     temperatures = []
+    #     humidities = []
+    #     pressures = []
+
+    #     for line in data_lines:
+    #         if line:
+    #             timestamp, temp, humidity, pressure = line.split(',')
+    #             timestamps.append(datetime.fromtimestamp(int(timestamp)))
+    #             temperatures.append(float(temp))
+    #             humidities.append(float(humidity))
+    #             pressures.append(float(pressure))
+
+    #     # Update the graph when the screen is updated
+    #     # conn = sqlite3.connect( 'finalProject.db' )
+    #     # cursor = conn.cursor()
+    #     # # Execute a query to retrieve the last entries from the 'sensor_data' table
+    #     # cursor.execute( 'SELECT timestamp, temperature, humidity, pressure FROM sensor_data ORDER BY timestamp DESC LIMIT 10' )
+    #     # data = cursor.fetchall()
+    #     # conn.close()
+
+    #     if data:
+    #         # Extract timestamp and data for the selected tab
+    #         timestamps = [datetime.fromtimestamp( row[0] ) for row in data]
+    #         if current_tab_index == 0:  # Temperature tab
+    #             temperatures = [row[1] for row in data]
+    #             self.graphWidget_temperature.plot_temperature( timestamps, temperatures )
+    #         elif current_tab_index == 1:  # Humidity tab
+    #             humidities = [row[2] for row in data]
+    #             self.graphWidget_humidity.plot_humidity( timestamps, humidities )
+    #         elif current_tab_index == 2:  # Pressure tab
+    #             pressures = [row[3] for row in data]
+    #             self.graphWidget_pressure.plot_pressure( timestamps, pressures )
+    #         elif current_tab_index == 3:  # All tab
+    #             temperatures = [row[1] for row in data]
+    #             humidities = [row[2] for row in data]
+    #             pressures = [row[3] for row in data]
+    #             self.graphWidget_all.plot_data( timestamps, temperatures, humidities, pressures )
+    def updateScreen(self):
         # Determine which tab is selected
         current_tab_index = self.tabWidget.currentIndex()
 
-        # Update the graph when the screen is updated
-        conn = sqlite3.connect( 'finalProject.db' )
-        cursor = conn.cursor()
-        # Execute a query to retrieve the last entries from the 'sensor_data' table
-        cursor.execute( 'SELECT timestamp, temperature, humidity, pressure FROM sensor_data ORDER BY timestamp DESC LIMIT 10' )
-        data = cursor.fetchall()
-        conn.close()
+        # Make socket call to 10.0.0.160 port 9000 with the command "get10"
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.connect(('10.0.0.160', 9000))
+            s.sendall(b'get10')
+            received_data = s.recv(1024)  # Adjust buffer size as needed
 
-        if data:
-            # Extract timestamp and data for the selected tab
-            timestamps = [datetime.fromtimestamp( row[0] ) for row in data]
-            if current_tab_index == 0:  # Temperature tab
-                temperatures = [row[1] for row in data]
-                self.graphWidget_temperature.plot_temperature( timestamps, temperatures )
-            elif current_tab_index == 1:  # Humidity tab
-                humidities = [row[2] for row in data]
-                self.graphWidget_humidity.plot_humidity( timestamps, humidities )
-            elif current_tab_index == 2:  # Pressure tab
-                pressures = [row[3] for row in data]
-                self.graphWidget_pressure.plot_pressure( timestamps, pressures )
-            elif current_tab_index == 3:  # All tab
-                temperatures = [row[1] for row in data]
-                humidities = [row[2] for row in data]
-                pressures = [row[3] for row in data]
-                self.graphWidget_all.plot_data( timestamps, temperatures, humidities, pressures )
+        # Parse received data and plot accordingly
+        data_lines = received_data.decode('utf-8').split('\n')
+        timestamps = []
+        temperatures = []
+        humidities = []
+        pressures = []
+
+        for line in data_lines:
+            if line:
+                parts = line.split(',')
+                if len(parts) == 4:  # Ensure there are enough parts in the line
+                    try:
+                        timestamp = int(parts[0].split(':')[1].strip())  # Extract timestamp from the line
+                        temperature = float(parts[1].split(':')[1].strip())  # Extract temperature from the line
+                        humidity = float(parts[2].split(':')[1].strip())  # Extract humidity from the line
+                        pressure = float(parts[3].split(':')[1].strip())  # Extract pressure from the line
+
+                        timestamps.append(timestamp)  # Append timestamp to timestamps list
+                        temperatures.append(temperature)  # Append temperature to temperatures list
+                        humidities.append(humidity)  # Append humidity to humidities list
+                        pressures.append(pressure)  # Append pressure to pressures list
+                    except (IndexError, ValueError) as e:
+                        print("Invalid data format:", line)  # Print error message for invalid data
+                        continue
+                else:
+                    print("Invalid data format:", line)  # Print error message for invalid data
+
+        # Update the graph when the screen is updated
+        if current_tab_index == 0:  # Temperature tab
+            self.graphWidget_temperature.plot_temperature(timestamps, temperatures)
+        elif current_tab_index == 1:  # Humidity tab
+            self.graphWidget_humidity.plot_humidity(timestamps, humidities)
+        elif current_tab_index == 2:  # Pressure tab
+            self.graphWidget_pressure.plot_pressure(timestamps, pressures)
+        elif current_tab_index == 3:  # All tab
+            self.graphWidget_all.plot_data(timestamps, temperatures, humidities, pressures)
+
+
+
+
 
 if __name__ == "__main__":
     app = QApplication( sys.argv )

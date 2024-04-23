@@ -1,22 +1,16 @@
-import sqlite3
+import subprocess
 import random
 import time
 import datetime
 
 # Function to create database table
 def create_table():
-    conn = sqlite3.connect( 'finalProject.db' )
-    c = conn.cursor()
-    c.execute( '''CREATE TABLE IF NOT EXISTS sensor_data
-                 ( timestamp INTEGER, temperature REAL, humidity REAL, pressure REAL )''' )
-    conn.commit()
-    conn.close()
+    # Run sqlite3 command to create the table
+    subprocess.run(['/usr/bin/sqlite3', 'finalProject.db',
+                    'CREATE TABLE IF NOT EXISTS sensor_data (timestamp INTEGER, temperature REAL, humidity REAL, pressure REAL);'])
 
 # Function to generate random sensor data and insert into database
 def insert_data():
-    conn = sqlite3.connect( 'finalProject.db' )
-    c = conn.cursor()
-
     # Generate timestamp
     timestamp = int( time.time() )
 
@@ -28,10 +22,9 @@ def insert_data():
     humidity = round( random.uniform( 40.0, 60.0 ), 2 )
     pressure = round( random.uniform( 900.0, 1100.0 ), 2 )
 
-    # Insert data into database
-    c.execute( "INSERT INTO sensor_data ( timestamp, temperature, humidity, pressure ) VALUES ( ?, ?, ?, ? )",
-              ( timestamp, temperature, humidity, pressure ) )
-    conn.commit()
+    # Run sqlite3 command to insert data into database
+    subprocess.run(['/usr/bin/sqlite3', 'finalProject.db',
+                    f'INSERT INTO sensor_data (timestamp, temperature, humidity, pressure) VALUES ({timestamp}, {temperature}, {humidity}, {pressure});'])
 
     # Print the inserted data with the date in iOS format
     print( "Data inserted successfully:" )
@@ -39,8 +32,6 @@ def insert_data():
     print( "Temperature:", temperature )
     print( "Humidity:", humidity )
     print( "Pressure:", pressure )
-
-    conn.close()
 
 
 # Main function to generate and insert data periodically
