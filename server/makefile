@@ -1,6 +1,6 @@
 CC ?= $(CROSS_COMPILE)gcc
-CFLAGS ?= -Wall -Werror
-LDFLAGS ?= -lpthread -lrt -lsqlite3
+CFLAGS ?= -Wall -Werror -I/lib/x86_64-linux-gnu/include
+LDFLAGS ?= -lpthread -lrt
 TARGET ?= aesdsocket
 
 .PHONY: all clean
@@ -8,7 +8,7 @@ TARGET ?= aesdsocket
 all: $(TARGET)
 
 aesdsocket: aesdsocket.c
-	$(CC) $(CFLAGS) -pthread -o $@ $< $(LDFLAGS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -pthread -o $@ $< -lsqlite3
 
 default: all
 
