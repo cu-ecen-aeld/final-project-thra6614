@@ -104,7 +104,7 @@ int sendLast10Entries( int clientSocket )
     }
 
     // Create a buffer to hold the data to send
-    char buffer[1024];
+    char buffer[1536];
 
     // Initialize buffer position
     int bufferPos = 0;
