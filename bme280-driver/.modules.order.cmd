@@ -1,1 +1,1 @@
-cmd_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/modules.order := {   echo /home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.ko; :; } | awk '!x[$$0]++' - > /home/ritikar97/Desktop/AESD/final_project/bme280-driver/modules.order
+cmd_/home/thra6614/2aesd/final-project-thra6614/bme280-driver/modules.order := {   echo /home/thra6614/2aesd/final-project-thra6614/bme280-driver/bme280.ko; :; } | awk '!x[$$0]++' - > /home/thra6614/2aesd/final-project-thra6614/bme280-driver/modules.order

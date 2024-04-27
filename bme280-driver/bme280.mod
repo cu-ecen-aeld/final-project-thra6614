@@ -1,2 +1,2 @@
-/home/ritikar97/Desktop/AESD/final_project/bme280-driver/main.o
+/home/thra6614/2aesd/final-project-thra6614/bme280-driver/main.o
 

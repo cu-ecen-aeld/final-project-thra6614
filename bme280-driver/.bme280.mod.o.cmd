@@ -1,8 +1,8 @@
-cmd_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o := gcc -Wp,-MMD,/home/ritikar97/Desktop/AESD/final_project/bme280-driver/.bme280.mod.o.d -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/9/include -I./arch/x86/include -I./arch/x86/include/generated -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/compiler-version.h -include ./include/linux/kconfig.h -I./ubuntu/include -include ./include/linux/compiler_types.h -D__KERNEL__ -fmacro-prefix-map=./= -Wall -Wundef -Werror=strict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -fno-PIE -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Wno-format-security -std=gnu89 -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -fcf-protection=none -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -DCONFIG_X86_X32_ABI -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -mfunction-return=thunk-extern -fno-jump-tables -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-address-of-packed-member -O2 --param=allow-store-data-races=0 -Wframe-larger-than=1024 -fstack-protector-strong -Wimplicit-fallthrough=5 -Wno-main -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-stack-clash-protection -g -pg -mrecord-mcount -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wvla -Wno-pointer-sign -Wno-stringop-truncation -Wno-array-bounds -Wno-stringop-overflow -Wno-restrict -Wno-maybe-uninitialized -Wno-alloc-size-larger-than -fno-strict-overflow -fno-stack-check -fconserve-stack -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wno-packed-not-aligned -fsanitize=bounds -fsanitize=shift -fsanitize=bool -fsanitize=enum -DMODULE -DKBUILD_BASENAME='"bme280.mod"' -DKBUILD_MODNAME='"bme280"' -D__KBUILD_MODNAME=kmod_bme280 -c -o /home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o /home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.c
+cmd_/home/thra6614/2aesd/final-project-thra6614/bme280-driver/bme280.mod.o := gcc -Wp,-MMD,/home/thra6614/2aesd/final-project-thra6614/bme280-driver/.bme280.mod.o.d -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/9/include -I./arch/x86/include -I./arch/x86/include/generated -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/compiler-version.h -include ./include/linux/kconfig.h -I./ubuntu/include -include ./include/linux/compiler_types.h -D__KERNEL__ -fmacro-prefix-map=./= -Wall -Wundef -Werror=strict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -fno-PIE -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Wno-format-security -std=gnu89 -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -fcf-protection=none -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -DCONFIG_X86_X32_ABI -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -mfunction-return=thunk-extern -fno-jump-tables -fno-delete-null-pointer-checks -Wno-frame-address -Wno-format-truncation -Wno-format-overflow -Wno-address-of-packed-member -O2 --param=allow-store-data-races=0 -Wframe-larger-than=1024 -fstack-protector-strong -Wimplicit-fallthrough=5 -Wno-main -Wno-unused-but-set-variable -Wno-unused-const-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-stack-clash-protection -g -pg -mrecord-mcount -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wvla -Wno-pointer-sign -Wno-stringop-truncation -Wno-array-bounds -Wno-stringop-overflow -Wno-restrict -Wno-maybe-uninitialized -Wno-alloc-size-larger-than -fno-strict-overflow -fno-stack-check -fconserve-stack -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wno-packed-not-aligned -fsanitize=bounds -fsanitize=shift -fsanitize=bool -fsanitize=enum -DMODULE -DKBUILD_BASENAME='"bme280.mod"' -DKBUILD_MODNAME='"bme280"' -D__KBUILD_MODNAME=kmod_bme280 -c -o /home/thra6614/2aesd/final-project-thra6614/bme280-driver/bme280.mod.o /home/thra6614/2aesd/final-project-thra6614/bme280-driver/bme280.mod.c
 
-source_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o := /home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.c
+source_/home/thra6614/2aesd/final-project-thra6614/bme280-driver/bme280.mod.o := /home/thra6614/2aesd/final-project-thra6614/bme280-driver/bme280.mod.c
 
-deps_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o := \
+deps_/home/thra6614/2aesd/final-project-thra6614/bme280-driver/bme280.mod.o := \
     $(wildcard include/config/MODULE_UNLOAD) \
     $(wildcard include/config/RETPOLINE) \
   include/linux/compiler-version.h \
@@ -301,10 +301,11 @@ deps_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o := \
     $(wildcard include/config/SPARSEMEM) \
     $(wildcard include/config/NUMA_KEEP_MEMINFO) \
   arch/x86/include/asm/nospec-branch.h \
-    $(wildcard include/config/DEBUG_ENTRY) \
+    $(wildcard include/config/CPU_SRSO) \
     $(wildcard include/config/CPU_IBPB_ENTRY) \
   include/linux/static_key.h \
   include/linux/objtool.h \
+    $(wildcard include/config/FRAME_POINTER) \
   arch/x86/include/asm/msr-index.h \
   arch/x86/include/asm/unwind_hints.h \
   arch/x86/include/asm/orc_types.h \
@@ -346,8 +347,10 @@ deps_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o := \
   include/linux/string.h \
     $(wildcard include/config/BINARY_PRINTF) \
     $(wildcard include/config/FORTIFY_SOURCE) \
+  include/linux/err.h \
   include/linux/errno.h \
   include/uapi/linux/errno.h \
+  include/linux/overflow.h \
   include/uapi/linux/string.h \
   arch/x86/include/asm/string.h \
   arch/x86/include/asm/string_64.h \
@@ -367,6 +370,7 @@ deps_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o := \
   arch/x86/include/asm/bug.h \
     $(wildcard include/config/DEBUG_BUGVERBOSE) \
   include/linux/instrumentation.h \
+    $(wildcard include/config/DEBUG_ENTRY) \
   include/asm-generic/bug.h \
     $(wildcard include/config/BUG) \
     $(wildcard include/config/GENERIC_BUG_RELATIVE_POINTERS) \
@@ -375,7 +379,6 @@ deps_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o := \
   arch/x86/include/asm/paravirt.h \
     $(wildcard include/config/PARAVIRT_SPINLOCKS) \
   arch/x86/include/asm/frame.h \
-    $(wildcard include/config/FRAME_POINTER) \
   arch/x86/include/asm/special_insns.h \
   include/linux/irqflags.h \
     $(wildcard include/config/TRACE_IRQFLAGS) \
@@ -389,7 +392,6 @@ deps_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o := \
   arch/x86/include/asm/vdso/processor.h \
   include/linux/personality.h \
   include/uapi/linux/personality.h \
-  include/linux/err.h \
   arch/x86/include/asm/tsc.h \
   arch/x86/include/asm/cpufeature.h \
     $(wildcard include/config/X86_FEATURE_NAMES) \
@@ -699,6 +701,6 @@ deps_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o := \
     $(wildcard include/config/MGEODEGX1) \
     $(wildcard include/config/MGEODE_LX) \
 
-/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o: $(deps_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o)
+/home/thra6614/2aesd/final-project-thra6614/bme280-driver/bme280.mod.o: $(deps_/home/thra6614/2aesd/final-project-thra6614/bme280-driver/bme280.mod.o)
 
-$(deps_/home/ritikar97/Desktop/AESD/final_project/bme280-driver/bme280.mod.o):
+$(deps_/home/thra6614/2aesd/final-project-thra6614/bme280-driver/bme280.mod.o):
