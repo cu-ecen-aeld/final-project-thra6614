@@ -9,7 +9,7 @@
 #define LONG_SIGNED_INT_NUM (11)
 int main() {
     int bme280_dev_fd;
-    char temp_buffer[LONG_SIGNED_INT_NUM];
+    char temp_buffer[LONG_SIGNED_INT_NUM] = "123";
     uint8_t num_bytes_read = 0;
     int retval = 0;
     long signed int temperature;
@@ -33,7 +33,7 @@ int main() {
     //printf("Value returned into the temperature buffer = %s\n", temp_buffer);
 
     // Convert temperature obtained in the buffer into int
-    temperature = strtol(temp_buffer, &endptr, (LONG_SIGNED_INT_NUM - 1));
+    temperature = strtol(temp_buffer, &endptr, (3 - 1));
     
     if(errno)
     {
@@ -44,7 +44,7 @@ int main() {
     }
     if((*endptr != '\0'))
     {
-        printf("%c\n\r", *endptr);
+        printf("%d\n\r", (int)*endptr);
         perror("Failed to convert string to a numerical value, endptr != 0");
         retval = -1;
         goto close_and_exit;
