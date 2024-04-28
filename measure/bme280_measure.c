@@ -44,8 +44,8 @@ int main() {
     }
     if((*endptr != '\0'))
     {
-        perror("Failed to convert string to a numerical value, endptr != 0,");
-        printf(", %x", *endptr);
+        printf("%c\n\r", *endptr);
+        perror("Failed to convert string to a numerical value, endptr != 0");
         retval = -1;
         goto close_and_exit;
     }
