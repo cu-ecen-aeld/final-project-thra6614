@@ -33,7 +33,7 @@ int main() {
     //printf("Value returned into the temperature buffer = %s\n", temp_buffer);
 
     // Convert temperature obtained in the buffer into int
-    temperature = strtol(temp_buffer, &endptr, (3 - 1));
+    temperature = strtol(temp_buffer, &endptr, (LONG_SIGNED_INT_NUM - 1));
     
     if(errno)
     {
