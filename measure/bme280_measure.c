@@ -4,6 +4,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <stdlib.h>
+#include <string.h>
 #define BME280_DEV "/dev/bme280" 
 #define LONG_SIGNED_INT_NUM (11)
 int main() {
@@ -33,10 +34,18 @@ int main() {
 
     // Convert temperature obtained in the buffer into int
     temperature = strtol(temp_buffer, &endptr, (LONG_SIGNED_INT_NUM - 1));
-  
-    if(errno || (*endptr != '\0'))
+    
+    if(errno)
     {
-        perror("Failed to convert string to a numerical value");
+        perror("Failed to convert string to a numerical value, errno: "); 
+        printf("%s", strerror(errno));
+        retval = -1;
+        goto close_and_exit;
+    }
+    if((*endptr != '\0'))
+    {
+        perror("Failed to convert string to a numerical value, endptr != 0,");
+        printf(", %x", *endptr);
         retval = -1;
         goto close_and_exit;
     }
