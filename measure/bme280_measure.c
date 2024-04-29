@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define BME280_DEV "/dev/bme280" 
-#define LONG_SIGNED_INT_NUM (11)
+#define LONG_SIGNED_INT_NUM (21)
 int main() {
     int bme280_dev_fd;
     char temp_buffer[LONG_SIGNED_INT_NUM] = "123";
