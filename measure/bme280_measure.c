@@ -49,7 +49,7 @@ int main() {
     printf("num bytes %x\n\r", num_bytes_read);
     for(int i = 0; i < 25; i++)
         printf("%x\n\r", temp_buffer[i]);
-    if((*endptr != '\0'))
+    if((*endptr != '\0') && (*endptr != 0x20))
     {
         printf("%d\n\r", (int)*endptr);
         perror("Failed to convert string to a numerical value, endptr != 0");
