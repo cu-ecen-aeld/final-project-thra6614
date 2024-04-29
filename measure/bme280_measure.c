@@ -41,6 +41,10 @@ int main() {
         printf("%s", strerror(errno));
         retval = -1;
         goto close_and_exit;
+    } else if (endptr == temp_buffer) {
+        perror("No digits were found in the string");
+        retval = -1;
+        goto close_and_exit;
     }
     if((*endptr != '\0'))
     {
