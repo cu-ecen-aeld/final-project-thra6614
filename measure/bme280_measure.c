@@ -47,8 +47,8 @@ int main() {
         goto close_and_exit;
     }
     printf("num bytes %x\n\r", num_bytes_read);
-    for(int i = 0; i < 11; i++)
-        printf("%x\n\r", temp_buffer[i]);
+    for(int i = 0; i < 21; i++)
+        printf("%c\n\r", temp_buffer[i]);
     if((*endptr != '\0'))
     {
         printf("%d\n\r", (int)*endptr);
