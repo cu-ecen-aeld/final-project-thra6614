@@ -48,10 +48,10 @@ int main() {
     }
     printf("num bytes %x\n\r", num_bytes_read);
     for(int i = 0; i < 21; i++)
-        printf("%c\n\r", temp_buffer[i]);
+        printf("%x\n\r", temp_buffer[i]);
     if((*endptr != '\0'))
     {
-        printf("%x\n\r", (int)*endptr);
+        printf("%d\n\r", (int)*endptr);
         perror("Failed to convert string to a numerical value, endptr != 0");
         retval = -1;
         goto close_and_exit;
