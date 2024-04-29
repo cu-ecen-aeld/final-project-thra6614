@@ -51,7 +51,7 @@ int main() {
         printf("%c\n\r", temp_buffer[i]);
     if((*endptr != '\0'))
     {
-        printf("%d\n\r", (int)*endptr);
+        printf("%x\n\r", (int)*endptr);
         perror("Failed to convert string to a numerical value, endptr != 0");
         retval = -1;
         goto close_and_exit;
