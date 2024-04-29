@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define BME280_DEV "/dev/bme280" 
-#define LONG_SIGNED_INT_NUM (21)
+#define LONG_SIGNED_INT_NUM (25)
 int main() {
     int bme280_dev_fd;
     char temp_buffer[LONG_SIGNED_INT_NUM] = "123";
@@ -33,7 +33,7 @@ int main() {
     //printf("Value returned into the temperature buffer = %s\n", temp_buffer);
 
     // Convert temperature obtained in the buffer into int
-    temperature = strtol(temp_buffer, &endptr, (LONG_SIGNED_INT_NUM - 1));
+    temperature = strtol(temp_buffer, &endptr, 10);
     
     if(errno)
     {
@@ -47,7 +47,7 @@ int main() {
         goto close_and_exit;
     }
     printf("num bytes %x\n\r", num_bytes_read);
-    for(int i = 0; i < 21; i++)
+    for(int i = 0; i < 25; i++)
         printf("%x\n\r", temp_buffer[i]);
     if((*endptr != '\0'))
     {
