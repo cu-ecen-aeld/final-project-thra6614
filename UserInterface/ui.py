@@ -133,17 +133,6 @@ class GraphWidget( QWidget ):
 
 
 class MainWindow( QMainWindow ):
-    def __init__( self ):
-        super().__init__()
-        self.initUI()
-        self.updateScreen()
-        # Create a QTimer instance to update the screen periodically
-        self.timer = QTimer( self )
-        self.timer.timeout.connect( self.updateScreen )  # Connect timeout signal to function
-        self.timer.start( 15000 )  # Start timer with a timeout interval of 15,000 milliseconds ( 15 seconds )
-
-
-class MainWindow( QMainWindow ):
     def __init__( self, ip_address ):
         super().__init__()
         self.ip_address = ip_address
