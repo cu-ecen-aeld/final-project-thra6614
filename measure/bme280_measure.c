@@ -14,11 +14,11 @@ int main() {
     int retval = 0;
     // Open connection to the database
 
-    sqlite3 *db; 
+    sqlite3 *db;
     int bme280_dev_fd;
     char temp_buffer[LONG_SIGNED_INT_NUM] = "123";
     uint8_t num_bytes_read = 0;
-    
+
     long signed int temperaturef, pressf;
     char *endptr;
     // Open I2C device file
@@ -36,8 +36,8 @@ int main() {
             fprintf(stderr, "Failed to open/create database: %s\n", sqlite3_errmsg(db));
             return 1;
         }
-    }  
-    while (1) {          
+    }
+    while (1) {
         // Read temperature from BME280 sensor
         num_bytes_read = read(bme280_dev_fd, temp_buffer, LONG_SIGNED_INT_NUM);
         if (num_bytes_read < 0)
@@ -47,7 +47,8 @@ int main() {
             goto close_and_exit;
         }
 
-        //printf("Value returned into the temperature buffer = %s\n", temp_buffer);
+        printf("Value returned into the temperature buffer = %s\n", temp_buffer);
+        printf("Value returned into the pressure buffer = %s\n", endptr);
 
         // Convert temperature obtained in the buffer into int
         temperaturef = strtol(temp_buffer, &endptr, 10);
@@ -76,7 +77,7 @@ int main() {
 
         char *errMsg = 0;
 
-        
+
 
         // SQL statement for table creation if it doesn't exist
         const char *createTableSQL = "CREATE TABLE IF NOT EXISTS sensor_data ("
@@ -137,6 +138,6 @@ int main() {
     close_and_exit:
         // Close I2C device file
         sqlite3_close(db);
-        close(bme280_dev_fd);    
+        close(bme280_dev_fd);
     return retval;
 }
