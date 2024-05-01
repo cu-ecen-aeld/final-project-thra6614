@@ -14,7 +14,7 @@ int main() {
     int retval = 0;
     // Open connection to the database
 
-    
+    sqlite3 *db; 
     int bme280_dev_fd;
     char temp_buffer[LONG_SIGNED_INT_NUM] = "123";
     uint8_t num_bytes_read = 0;
@@ -73,7 +73,7 @@ int main() {
         // Print temperature
         printf("Temperature: %ld.%ldC\n", temperaturef/100, temperaturef % 100);
         printf("Pressure: %ld.%ldC\n", pressf/100, pressf % 100);
-        sqlite3 *db;
+
         char *errMsg = 0;
 
         
