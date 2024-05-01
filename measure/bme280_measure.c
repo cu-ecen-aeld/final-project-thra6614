@@ -13,7 +13,7 @@ int main() {
     char temp_buffer[LONG_SIGNED_INT_NUM] = "123";
     uint8_t num_bytes_read = 0;
     int retval = 0;
-    long signed int temperaturef;
+    long signed int temperaturef, pressf;
     char *endptr;
     // Open I2C device file
     bme280_dev_fd = open(BME280_DEV, O_CREAT | O_RDWR, 0744);
@@ -129,3 +129,4 @@ close_and_exit:
     close(bme280_dev_fd);
     return retval;
 }
+

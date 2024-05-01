@@ -1,26 +1,17 @@
 # References : ../examples/autotest-validate/Makefile
-CROSS_COMPILE = 
-
-
-ifeq ($(CC),)
-	CC ?= $(CROSS_COMPILE)gcc
-endif
-
-ifeq ($(CFLAGS),)
-	CFLAGS ?= -g -Wall -Werror ${INCLUDES}
-endif
-
-ifeq ($(LDFLAGS),)
-	LDFLAGS ?= -pthread -lrt
-endif
-
-SRC ?= bme280_measure.c
+CC ?= $(CROSS_COMPILE)gcc
+CFLAGS ?= -Wall -Werror -I/lib/x86_64-linux-gnu/include
+LDFLAGS ?=  -lrt
 TARGET ?= bme280_measure
+
+.PHONY: all clean
 
 all: $(TARGET)
 
-$(TARGET) : ${SRC}
-	$(CC) $(CFLAGS) ${SRC} -o ${TARGET} $(LDFLAGS)
+bme280_measure: bme280_measure.c
+	$(CC) $(CFLAGS) $(LDFLAGS) -pthread -o $@ $< -lsqlite3
+
+default: all
 
 clean:
-	rm -f *.o ${TARGET}
+	rm -f $(TARGET)
